@@ -43,7 +43,7 @@ int realloc_memory_##T(array_##T* obj, int len) { \
 T get_##T(array_##T* obj, int pos, int* status) { \
     if (obj != NULL) { \
         if (pos >= obj->max || pos < 0) { \
-            printf("get out of bound -> len:%i, pos:%i", obj->max, pos); \
+            printf("get out of bound -> len:%i, pos:%i\n", obj->max, pos); \
             *status = 0; \
             return 0; \
         } else { \
@@ -51,6 +51,7 @@ T get_##T(array_##T* obj, int pos, int* status) { \
             return obj->ptr[pos]; \
         } \
     } else { \
+        printf("your obj is NULL.\n"); \
         *status = 0; \
         return 0; \
     } \
@@ -60,13 +61,14 @@ T get_##T(array_##T* obj, int pos, int* status) { \
 int set_##T(array_##T* obj, int pos, T value) { \
     if (obj != NULL) { \
         if (pos >= obj->max && pos < 0) { \
-            printf("set out of bound -> len:%i, pos:%i", obj->max, pos); \
+            printf("set out of bound -> len:%i, pos:%i\n", obj->max, pos); \
             return 0; \
         } else { \
             obj->ptr[pos] = value; \
             return 1; \
         } \
     } else { \
+        printf("your obj is NULL.\n"); \
         return 0; \
     } \
 }
