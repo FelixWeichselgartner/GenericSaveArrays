@@ -31,6 +31,9 @@ public: \
     void del() { \
         delete this->_ptr; \
     } \
+    Array_##T() { \
+        this->_len = 0; \
+    } \
     Array_##T(int len) {  \
         this->_len = len;  \
         this->reserve(); \
