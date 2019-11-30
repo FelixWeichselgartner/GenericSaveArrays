@@ -41,7 +41,7 @@ public: \
     ~Array_##T() { \
         this->del(); \
     } \
-    T get(int pos) { \
+    T get(int pos) const { \
         if (this->_ptr != NULL) { \
             if (pos >= this->_len || pos < 0) { \
                 std::cout << "get out of bound -> len:" << this->_len << ", pos:" << pos << std::endl; \
