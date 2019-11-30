@@ -65,6 +65,9 @@ public: \
             std::cout << "your obj is NULL." << std::endl; \
         } \
     } \
+    int length() { \
+        return this->_len; \
+    } \
 private: \
     T* _ptr; \
     int _len; \
