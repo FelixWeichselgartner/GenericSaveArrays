@@ -31,19 +31,16 @@ public: \
     void del() { \
         delete this->_ptr; \
     } \
-    Array_##T() { \
-        this->_len = 0; \
-    } \
-    Array_##T(int len) {  \
+    Array_##T(unsigned int len) {  \
         this->_len = len;  \
         this->reserve(); \
     } \
     ~Array_##T() { \
         this->del(); \
     } \
-    T get(int pos) const { \
+    T get(unsigned int pos) const { \
         if (this->_ptr != NULL) { \
-            if (pos >= this->_len || pos < 0) { \
+            if (pos >= this->_len) { \
                 std::cout << "get out of bound -> len:" << this->_len << ", pos:" << pos << std::endl; \
                 return 0; \
             } else { \
@@ -54,9 +51,9 @@ public: \
             return 0; \
         } \
     } \
-    void set(int pos, T value) { \
+    void set(unsigned int pos, T value) { \
         if (this->_ptr != NULL) { \
-            if (pos >= this->_len && pos < 0) { \
+            if (pos >= this->_len) { \
                 std::cout << "set out of bound -> len:" << this->_len << ", pos:" << pos << std::endl; \
             } else { \
                 this->_ptr[pos] = value; \
@@ -70,7 +67,7 @@ public: \
     } \
 private: \
     T* _ptr; \
-    int _len; \
+    unsigned int _len; \
 };
 
 #define Array_Type(T) Array_##T
