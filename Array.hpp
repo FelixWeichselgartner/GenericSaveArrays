@@ -31,8 +31,9 @@ public: \
     void del() { \
         delete this->_ptr; \
     } \
-    Array_##T(unsigned int len) {  \
+    Array_##T(unsigned int len, T error_return) {  \
         this->_len = len;  \
+        this->error_return = error_return; \
         this->reserve(); \
     } \
     ~Array_##T() { \
@@ -42,13 +43,13 @@ public: \
         if (this->_ptr != NULL) { \
             if (pos >= this->_len) { \
                 std::cout << "get out of bound -> len:" << this->_len << ", pos:" << pos << std::endl; \
-                return 0; \
+                return this->error_return; \
             } else { \
                 return this->_ptr[pos]; \
             } \
         } else { \
             printf("your obj is NULL.\n"); \
-            return 0; \
+            return this->error_return; \
         } \
     } \
     void set(unsigned int pos, T value) { \
@@ -67,10 +68,11 @@ public: \
     } \
 private: \
     T* _ptr; \
+    T error_return; \
     unsigned int _len; \
 };
 
 #define Array_Type(T) Array_##T
-#define Array(T, l) Array_##T(l)
+#define Array(T, l, r) Array_##T(l, r)
 
 #endif
