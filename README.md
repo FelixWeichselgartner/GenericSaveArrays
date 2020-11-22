@@ -1,6 +1,5 @@
 # GenericSaveArrays
-generic save arrays implemented in C
 
-I wrote this library to avoid unneccessary pointer erros in C.
+Generic save arrays implemented in C and C++.
 
-Copyright (c) 2019 Felix Weichselgartner
+I wrote this library to avoid unneccessary pointer erros.
